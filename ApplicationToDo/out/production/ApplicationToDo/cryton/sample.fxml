@@ -1,0 +1,101 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="mainBorderPane" fx:controller="cryton.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="file">
+                        <MenuItem text="New..." onAction="#showNewItemDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+
+                <Menu text="Settings">
+                    <items>
+                        <MenuItem text="Account"/>
+                    </items>
+
+                </Menu>
+
+                <Menu text="View">
+                    <items>
+                        <MenuItem text="Colors"/>
+                    </items>
+
+                </Menu>
+
+                <Menu text="About">
+                    <items>
+                        <MenuItem text="Developer"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Cryton Andrew"/>
+                    </items>
+
+                </Menu>
+            </MenuBar>
+
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add new item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/Edit24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+
+                    <ToggleButton fx:id="filterToggleButton" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show today's list"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/Bookmarks24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+        </ListView>
+    </left>
+
+
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" onMouseClicked="#handleClickListView" VBox.vgrow="ALWAYS" wrapText="true" editable="false"/>
+            <HBox>
+                <Label text="Due:" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="18"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="18"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <ListView>
+        </ListView>
+    </right>
+
+</BorderPane>
